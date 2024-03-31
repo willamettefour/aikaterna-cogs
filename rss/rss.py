@@ -33,7 +33,7 @@ IPV6_RE = re.compile("([a-f0-9:]+:+)+[a-f0-9]+")
 GuildMessageable = Union[discord.TextChannel, discord.VoiceChannel, discord.StageChannel, discord.Thread]
 
 
-__version__ = "2.1.6"
+__version__ = "2.1.7"
 
 warnings.filterwarnings(
     "ignore",
@@ -1521,12 +1521,12 @@ class RSS(commands.Cog):
                 )
                 break
 
-        #  TODO: just going to keep this here for now in case something explodes later
+        #  TODO: fix rss losing its place on on store.steampowered.com feeds/post lists
 
-        #  if len(feedparser_plus_objects) == len(sorted_feed_by_post_time):
-        #      msg = (f"Couldn't match anything for feed {name} on cid {channel.id}, or switching between feed header and feed entry, only posting 1 post")
-        #      log.debug(msg)
-        #      feedparser_plus_objects = [feedparser_plus_objects[0]]
+        if len(feedparser_plus_objects) == len(sorted_feed_by_post_time):
+            msg = (f"Couldn't match anything for feed {name} on cid {channel.id}, or switching between feed header and feed entry, only posting 1 post")
+            log.debug(msg)
+            feedparser_plus_objects = [feedparser_plus_objects[0]]
 
         if not feedparser_plus_objects:
             # early-exit so that we don't dispatch when there's no updates
