@@ -8,7 +8,7 @@ from redbot.core.utils.chat_formatting import pagify
 from redbot.core.utils.menus import close_menu, menu, DEFAULT_CONTROLS
 
 
-__version__ = "2.1.1"
+__version__ = "2.1.1b14"
 
 
 class Timezone(commands.Cog):
@@ -66,6 +66,58 @@ class Timezone(commands.Cog):
                 await menu(ctx, embed_list, DEFAULT_CONTROLS)
             return None
 
+    async def clock(self, x, y):
+        if x in [0,12]:
+            time = "6R2WQXEnt"
+        if x in [0,12] and y == 30:
+            time = "6R2YT0YND"
+        if x in [1,13]:
+            time = "6R2VI3EzU"
+        if x in [1,13] and y == 30:
+            time = "6R2XQwyn9"
+        if x in [2,14]:
+            time = "6R2VNEUFe"
+        if x in [2,14] and y == 30:
+            time = "6R2Y0YQj4"
+        if x in [3,15]:
+            time = "6R2VRnKnN"
+        if x in [3,15] and y == 30:
+            time = "6R2Y5LM5E"
+        if x in [4,16]:
+            time = "6R2VVnlSB"
+        if x in [4,16] and y == 30:
+            time = "6R2Y9LnAs"
+        if x in [5,17]:
+            time = "6R2W0v9ur"
+        if x in [5,17] and y == 30:
+            time = "6R2Yih95A"
+        if x in [6,18]:
+            time = "6R2Wq3t0P"
+        if x in [6,18] and y == 30:
+            time = "6R2Ypch0b"
+        if x in [7,19]:
+            time = "6R2Wv7azE"
+        if x in [7,19] and y == 30:
+            time = "6R2YufZz0"
+        if x in [8,20]:
+            time = "6R2WyR0ic"
+        if x in [8,20] and y == 30:
+            time = "6R2YzAsT5"
+        if x in [9,21]:
+            time = "6R2WD6oyg"
+        if x in [9,21] and y == 30:
+            time = "6R2YFZ2gb"
+        if x in [10,22]:
+            time = "6R2WH6024"
+        if x in [10,22] and y == 30:
+            time = "6R2YJYEK_"
+        if x in [11,23]:
+            time = "6R2WMY1TF"
+        if x in [11,23] and y == 30:
+            time = "6R2YP1miP"
+        clock = f"https://willamette.is-a-cool-femboy.xyz/{time}.webp"
+        return clock
+    
     @commands.guild_only()
     @commands.group()
     async def time(self, ctx):
@@ -78,19 +130,24 @@ class Timezone(commands.Cog):
         pass
 
     @time.command()
-    async def tz(self, ctx, *, timezone_name: Optional[str] = None):
+    async def tz(self, ctx, *, timezone_name=None):
         """Gets the time in any timezone."""
         if timezone_name is None:
-            time = datetime.now()
-            fmt = "**%H:%M** %d-%B-%Y"
-            await ctx.send(f"Current system time: {time.strftime(fmt)}")
+            await ctx.send("Please specify a timezone!")
         else:
             tz_results = self.fuzzy_timezone_search(timezone_name)
             tz_resp = await self.format_results(ctx, tz_results)
             if tz_resp:
-                time = datetime.now(pytz.timezone(tz_resp[0][0]))
-                fmt = "**%H:%M** %d-%B-%Y **%Z (UTC %z)**"
-                await ctx.send(time.strftime(fmt))
+                simp = pytz.timezone(tz_resp[0][0])
+                time = datetime.now(simp)
+                time = time.strftime("%I:%M %p (%H:%M) %B %d, %Y")
+                embed = discord.Embed(title="", color=await ctx.embed_color())
+                x = datetime.now(simp).hour
+                y = datetime.now(simp).minute
+                clock = await self.clock(x, y)
+                embed.set_author(name=time, icon_url=clock)
+                embed.set_footer(text=simp)
+                await ctx.send(embed=embed)
 
     @time.command()
     async def iso(self, ctx, *, iso_code=None):
@@ -129,9 +186,14 @@ class Timezone(commands.Cog):
                 )
             else:
                 time = datetime.now(timezone_name)
-                time = time.strftime("**%H:%M** %d-%B-%Y **%Z (UTC %z)**")
-                msg = f"Your current timezone is **{usertime}.**\n" f"The current time is: {time}"
-                await ctx.send(msg)
+                time = time.strftime("%I:%M %p (%H:%M) %B %d, %Y")
+                embed = discord.Embed(title="", color=await ctx.embed_color())
+                x = datetime.now(timezone_name).hour
+                y = datetime.now(timezone_name).minute
+                clock = await self.clock(x, y)
+                embed.set_author(name=time, icon_url=clock)
+                embed.set_footer(text=usertime)
+                await ctx.send(embed=embed)
         else:
             tz_results = self.fuzzy_timezone_search(timezone_name)
             tz_resp = await self.format_results(ctx, tz_results)
@@ -162,7 +224,7 @@ class Timezone(commands.Cog):
                 await ctx.send(f"Successfully set {user.name}'s timezone to **{tz_resp[0][0]}**.")
 
     @time.command()
-    async def user(self, ctx, user: discord.Member = None):
+    async def user(self, ctx, user: discord.User=None):
         """Shows the current time for the specified user."""
         if not user:
             await ctx.send("That isn't a user!")
@@ -170,16 +232,19 @@ class Timezone(commands.Cog):
             usertime, tz = await self.get_usertime(user)
             if usertime:
                 time = datetime.now(tz)
-                fmt = "**%H:%M** %d-%B-%Y **%Z (UTC %z)**"
-                time = time.strftime(fmt)
-                await ctx.send(
-                    f"{user.name}'s current timezone is: **{usertime}**\n" f"The current time is: {str(time)}"
-                )
+                time = time.strftime("%I:%M %p (%H:%M) %B %d, %Y")
+                embed = discord.Embed(title="", color=await ctx.embed_color())
+                x = datetime.now(tz).hour
+                y = datetime.now(tz).minute
+                clock = await self.clock(x, y)
+                embed.set_author(name=time, icon_url=clock)
+                embed.set_footer(text=usertime)
+                await ctx.send(embed=embed)
             else:
                 await ctx.send("That user hasn't set their timezone.")
 
     @time.command()
-    async def compare(self, ctx, user: discord.Member = None):
+    async def compare(self, ctx, user: discord.User=None):
         """Compare your saved timezone with another user's timezone."""
         if not user:
             return await ctx.send_help()

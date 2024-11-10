@@ -1,4 +1,5 @@
 from .timezone import Timezone
+import discord
 
 __red_end_user_data_statement__ = (
     "This cog stores data provided by users "
@@ -11,6 +12,8 @@ __red_end_user_data_statement__ = (
     "but will respect deletion requests."
 )
 
-
 async def setup(bot):
-    await bot.add_cog(Timezone(bot))
+    if discord.__version__[0] == "2":
+        await bot.add_cog(Timezone(bot))
+    else:
+        bot.add_cog(Timezone(bot))
