@@ -8,7 +8,7 @@ from redbot.core.utils.chat_formatting import pagify
 from redbot.core.utils.menus import close_menu, menu, DEFAULT_CONTROLS
 
 
-__version__ = "2.1.1.10"
+__version__ = "2.1.1"
 
 
 class Timezone(commands.Cog):
@@ -68,53 +68,53 @@ class Timezone(commands.Cog):
 
     async def clock(self, x, y):
         if x in [0,12]:
-            time = "7fyi25hs6"
+            time = "7rrl19ABn"
         if x in [0,12] and y == 30:
-            time = "7fykts8Do"
+            time = "7rrmCxpm7"
         if x in [1,13]:
-            time = "7fyeMOtVi"
+            time = "7rrjRFXch"
         if x in [1,13] and y == 30:
-            time = "7fyitMN6w"
+            time = "7rrl8Cg2u"
         if x in [2,14]:
-            time = "7fyeSWhx8"
+            time = "7rrjTO8kj"
         if x in [2,14] and y == 30:
-            time = "7fyiy2amA"
+            time = "7rrleK3Fk"
         if x in [3,15]:
-            time = "7fyeVRNXW"
+            time = "7rrk3ZEuZ"
         if x in [3,15] and y == 30:
-            time = "7fyiH5upd"
+            time = "7rrlkRSha"
         if x in [4,16]:
-            time = "7fyeZRprK"
+            time = "7rrka6s6P"
         if x in [4,16] and y == 30:
-            time = "7fyiM9bY2"
+            time = "7rrloRtLZ"
         if x in [5,17]:
-            time = "7fyf2R0Wy"
+            time = "7rrkhilNG"
         if x in [5,17] and y == 30:
-            time = "7fyiQX7KC"
+            time = "7rrlwzVZl"
         if x in [6,18]:
-            time = "7fyfwFII_"
+            time = "7rrkuSPRD"
         if x in [6,18] and y == 30:
-            time = "7fyjl5Hmk"
+            time = "7rrmfDQuh"
         if x in [7,19]:
-            time = "7fyfRajHy"
+            time = "7rrkz8d6H"
         if x in [7,19] and y == 30:
-            time = "7fyjqXJcV"
+            time = "7rrmk9_vB"
         if x in [8,20]:
-            time = "7fyhie2Ep"
+            time = "7rrkJwoZB"
         if x in [8,20] and y == 30:
-            time = "7fyju90oY"
+            time = "7rrmn5vWo"
         if x in [9,21]:
-            time = "7fyhtpyP4"
+            time = "7rrkMrVpp"
         if x in [9,21] and y == 30:
-            time = "7fyk49BSg"
+            time = "7rrmsGM0J"
         if x in [10,22]:
-            time = "7fyhA3UYq"
+            time = "7rrkUYGVw "
         if x in [10,22] and y == 30:
-            time = "7fyk7lU3j"
+            time = "7rrmwGnvx"
         if x in [11,23]:
-            time = "7fyi11bo5"
+            time = "7rrl05uxm"
         if x in [11,23] and y == 30:
-            time = "7fyks7gO7"
+            time = "7rrmBtji6"
         clock = f"https://willamette.is-a-cool-femboy.xyz/{time}.webp"
         return clock
     
