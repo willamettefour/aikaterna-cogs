@@ -68,53 +68,53 @@ class Timezone(commands.Cog):
 
     async def clock(self, x, y):
         if x in [0,12]:
-            time = "7rrl19ABn"
+            time = "7AwHrhJUF"
         if x in [0,12] and y == 30:
-            time = "7rrmCxpm7"
+            time = "7AwM_GoST"
         if x in [1,13]:
-            time = "7rrjRFXch"
+            time = "7AwGbtCbu"
         if x in [1,13] and y == 30:
-            time = "7rrl8Cg2u"
+            time = "7AwKmO9HF"
         if x in [2,14]:
-            time = "7rrjTO8kj"
+            time = "7AwGeWG8N"
         if x in [2,14] and y == 30:
-            time = "7rrleK3Fk"
+            time = "7AwKqgdEY"
         if x in [3,15]:
-            time = "7rrk3ZEuZ"
+            time = "7AwGpjS0H"
         if x in [3,15] and y == 30:
-            time = "7rrlkRSha"
+            time = "7AwKtsvR0"
         if x in [4,16]:
-            time = "7rrka6s6P"
+            time = "7AwGunzzw"
         if x in [4,16] and y == 30:
-            time = "7rrloRtLZ"
+            time = "7AwKxs7kP"
         if x in [5,17]:
-            time = "7rrkhilNG"
+            time = "7AwGynb3k"
         if x in [5,17] and y == 30:
-            time = "7rrlwzVZl"
+            time = "7AwKAVbi7"
         if x in [6,18]:
-            time = "7rrkuSPRD"
+            time = "7AwGTG6kE"
         if x in [6,18] and y == 30:
-            time = "7rrmfDQuh"
+            time = "7AwKY4wWd"
         if x in [7,19]:
-            time = "7rrkz8d6H"
+            time = "7AwGXWuAI"
         if x in [7,19] and y == 30:
-            time = "7rrmk9_vB"
+            time = "7AwL0OmEM"
         if x in [8,20]:
-            time = "7rrkJwoZB"
+            time = "7AwH0W64w"
         if x in [8,20] and y == 30:
-            time = "7rrmn5vWo"
+            time = "7AwMoSu6P"
         if x in [9,21]:
-            time = "7rrkMrVpp"
+            time = "7AwH5J1S5"
         if x in [9,21] and y == 30:
-            time = "7rrmsGM0J"
+            time = "7AwMuJvYp"
         if x in [10,22]:
-            time = "7rrkUYGVw "
+            time = "7AwH9b5Po"
         if x in [10,22] and y == 30:
-            time = "7rrmwGnvx"
+            time = "7AwMAjM2K"
         if x in [11,23]:
-            time = "7rrl05uxm"
+            time = "7AwHni7pR"
         if x in [11,23] and y == 30:
-            time = "7rrmBtji6"
+            time = "7AwMWXz9k"
         clock = f"https://willamette.is-a-cool-femboy.xyz/{time}.webp"
         return clock
     
